@@ -1,10 +1,11 @@
 # ============================================================
-# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v6)
+# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v7)
 # 前端 dist 本地预构建，后端在 Docker 内编译（低内存配置）
+# 注意：阶段1用 JDK（编译），阶段2用 JRE（运行）
 # ============================================================
 
-# 阶段1: 编译后端
-FROM eclipse-temurin:21-jre AS backend-build
+# 阶段1: 编译后端（需要 JDK）
+FROM eclipse-temurin:21 AS backend-build
 RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/lists/*
 WORKDIR /build
 COPY backend/. .
@@ -12,7 +13,7 @@ ENV MAVEN_OPTS=-Xmx512m
 RUN mvn dependency:go-offline -B
 RUN mvn clean package -DskipTests
 
-# 阶段2: 运行
+# 阶段2: 运行（JRE 即可）
 FROM eclipse-temurin:21-jre
 RUN apt-get update && apt-get install -y --no-install-recommends nginx && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
