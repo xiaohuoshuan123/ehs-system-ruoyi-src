@@ -120,12 +120,12 @@ spring:
 #          url: jdbc:oracle:thin:@//localhost:1521/XE
 #          username: ROOT
 #          password: root
-#        postgres:
-#          type: ${spring.datasource.type}
-#          driverClassName: org.postgresql.Driver
-#          url: jdbc:postgresql://localhost:5432/postgres?useUnicode=true&characterEncoding=utf8&useSSL=true&autoReconnect=true&reWriteBatchedInserts=true
-#          username: root
-#          password: root
+        postgres:
+          type: ${spring.datasource.type}
+          driverClassName: org.postgresql.Driver
+          url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:ryvue}?useUnicode=true&characterEncoding=utf8&useSSL=true&reWriteBatchedInserts=true
+          username: ${DB_USER:postgres}
+          password: ${DB_PASSWORD:postgres}
 #        sqlserver:
 #          type: ${spring.datasource.type}
 #          driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
