@@ -1,29 +1,41 @@
-# render.yaml —— 在 Render 用 Docker 部署 RuoYi-Vue-Plus
-# 用法: Render 控制台 -> New -> Blueprint -> 关联本仓库 -> 选用此文件
+# render.yaml —— EHS系统 Render 部署配置
+# 使用方式: Render Dashboard -> New -> Blueprint -> 关联仓库 -> 选用此文件
+# 或: Render Dashboard -> 现有服务 -> Settings -> Environment Variables
+
 services:
   - type: web
     name: ehs-system
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: standard            # 至少 2GB, RuoYi 内存占用大 (免费 512MB 必 OOM)
+    plan: standard              # 至少 2GB RAM，RuoYi 内存占用大
     healthCheckPath: /health
+    
     envVars:
       - key: PORT
-        generateValue: true
+        value: 8080
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      # ↓↓↓ 把 MySQL / Redis 指向可达的外部实例 (阿里云RDS / 腾讯云 / 自建) ↓↓↓
-      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_URL
-        value: jdbc:mysql://<MySQL主机>:3306/<库名>?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
-      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_USERNAME
-        value: root
-      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_PASSWORD
-        value: <MySQL密码>
-      - key: SPRING_DATA_REDIS_HOST
-        value: <Redis主机>
-      - key: SPRING_DATA_REDIS_PORT
+      
+      # ↓↓↓ PostgreSQL 数据库（Render/Neon/AWS RDS）↓↓↓
+      - key: DB_HOST
+        value: <填入PostgreSQL主机地址，如 ep-xxx-xxx.aws.neon.tech>
+      - key: DB_NAME
+        value: ryvue
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        value: <填入数据库密码>
+      - key: DB_PORT
+        value: "5432"
+      
+      # ↓↓↓ Redis（Render/Upstash/AWS ElastiCache）↓↓↓
+      - key: REDIS_HOST
+        value: <填入Redis主机地址，如 redis.upstash.io>
+      - key: REDIS_PORT
         value: "6379"
-      - key: SPRING_DATA_REDIS_PASSWORD
-        value: <Redis密码>
+      - key: REDIS_PASSWORD
+        value: <填入Redis密码>
+      
+      # ↓↓↓ JVM 内存（根据套餐调整）↓↓↓
       - key: JAVA_OPTS
         value: "-Xms512m -Xmx1500m -XX:+UseZGC"
