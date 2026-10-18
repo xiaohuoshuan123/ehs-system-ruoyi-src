@@ -1,0 +1,1 @@
+import{pt as e}from"./runtime-core.esm-bundler-CPNJfWfN.js";import{y as t}from"./user-C3XCfpVv.js";function n(n){let r=e([``,``]);return{dateRange:r,applyDateRange:e=>t(e,r.value,n),resetDateRange:()=>{r.value=[``,``]}}}export{n as t};

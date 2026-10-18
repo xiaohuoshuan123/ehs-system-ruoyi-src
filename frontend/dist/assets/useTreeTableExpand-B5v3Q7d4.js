@@ -1,0 +1,1 @@
+import{pt as e}from"./runtime-core.esm-bundler-CPNJfWfN.js";function t(t){let{tableRef:n,data:r,initialExpandAll:i=!0,getChildren:a=e=>e.children}=t,o=e(i),s=(e,t)=>{e.forEach(e=>{n.value?.toggleRowExpansion(e,t);let r=a(e);r?.length&&s(r,t)})},c=e=>{o.value=e,s(r.value,e)};return{isExpandAll:o,setExpandAll:c,handleToggleExpandAll:()=>{c(!o.value)}}}export{t};

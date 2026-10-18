@@ -1,0 +1,1 @@
+var e=function(e){return e.M=`M`,e.C=`C`,e.F=`F`,e}({});export{e as t};

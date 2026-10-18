@@ -1,0 +1,1 @@
+import{h as e,x as t,z as n}from"./runtime-core.esm-bundler-CPNJfWfN.js";import{g as r,h as i}from"./useApi-BPuI6ZR9-Bj0IJ5Xq.js";var a=t({__name:`index`,setup(t){let a=i(),o=r(),{params:s,query:c}=a,{path:l}=s;return o.replace({path:`/`+l,query:c}),(t,r)=>(n(),e(`div`))}});export{a as default};

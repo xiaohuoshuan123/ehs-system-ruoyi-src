@@ -1,0 +1,1 @@
+import{d as e}from"./user-C3XCfpVv.js";function t(t){return e({url:`/resource/oss/list`,method:`get`,params:t})}function n(t){return e({url:`/resource/oss/listByIds/`+t,method:`get`})}function r(t){return e({url:`/resource/oss/upload`,method:`post`,data:t})}function i(t){return e({url:`/resource/oss/`+t,method:`delete`})}export{r as i,n,t as r,i as t};

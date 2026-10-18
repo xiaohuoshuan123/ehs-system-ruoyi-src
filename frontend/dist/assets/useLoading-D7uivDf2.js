@@ -1,0 +1,1 @@
+import{pt as e}from"./runtime-core.esm-bundler-CPNJfWfN.js";function t(t=!1){let n=e(t);return{loading:n,setLoading:e=>{n.value=e},withLoading:async e=>{n.value=!0;try{return await e()}finally{n.value=!1}}}}export{t};

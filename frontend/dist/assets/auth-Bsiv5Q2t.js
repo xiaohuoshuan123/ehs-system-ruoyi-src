@@ -1,0 +1,1 @@
+import{d as e}from"./user-C3XCfpVv.js";function t(t){return e({url:`/auth/binding/`+t,method:`get`})}function n(t){return e({url:`/auth/unlock/`+t,method:`delete`})}function r(){return e({url:`/system/social/list`,method:`get`})}export{n,r,t};

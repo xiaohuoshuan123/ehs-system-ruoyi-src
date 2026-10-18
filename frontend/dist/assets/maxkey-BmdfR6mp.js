@@ -1,0 +1,1 @@
+var e=`/assets/maxkey-BQHOSwiS.svg`;export{e as default};

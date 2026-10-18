@@ -1,0 +1,1 @@
+import{T as e,_ as t}from"./user-C3XCfpVv.js";var n={routerJump(n){e.closePage(t.currentRoute.value),t.push({path:n.formPath,query:{id:n.businessId,type:n.type,taskId:n.taskId}})}};export{n as t};
