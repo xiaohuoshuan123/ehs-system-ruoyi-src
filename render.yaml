@@ -1,0 +1,29 @@
+# render.yaml —— 在 Render 用 Docker 部署 RuoYi-Vue-Plus
+# 用法: Render 控制台 -> New -> Blueprint -> 关联本仓库 -> 选用此文件
+services:
+  - type: web
+    name: ehs-system
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: standard            # 至少 2GB, RuoYi 内存占用大 (免费 512MB 必 OOM)
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        generateValue: true
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      # ↓↓↓ 把 MySQL / Redis 指向可达的外部实例 (阿里云RDS / 腾讯云 / 自建) ↓↓↓
+      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_URL
+        value: jdbc:mysql://<MySQL主机>:3306/<库名>?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_USERNAME
+        value: root
+      - key: SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_PASSWORD
+        value: <MySQL密码>
+      - key: SPRING_DATA_REDIS_HOST
+        value: <Redis主机>
+      - key: SPRING_DATA_REDIS_PORT
+        value: "6379"
+      - key: SPRING_DATA_REDIS_PASSWORD
+        value: <Redis密码>
+      - key: JAVA_OPTS
+        value: "-Xms512m -Xmx1500m -XX:+UseZGC"
