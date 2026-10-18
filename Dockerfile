@@ -13,11 +13,11 @@ RUN apk add --no-cache nginx
 
 WORKDIR /app
 
-# 直接复制预构建的前端静态文件
+# 前端已预先构建并提交到仓库，直接复制
 COPY frontend/dist /usr/share/nginx/html
 COPY --from=backend /build/ruoyi-admin/target/ruoyi-admin.jar app.jar
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
-CMD ["sh", "-c", "nginx -g 'daemon off;' & java -jar /app.jar"]
+CMD ["sh", "-c", "nginx -g 'daemon off;' & java -jar app.jar"]
