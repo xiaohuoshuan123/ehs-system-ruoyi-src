@@ -7,4 +7,32 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - SERVER_PORT=8080
+      - DB_HOST=db
+      - DB_NAME=ryvue
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres123
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=ruoyi123
+    depends_on:
+      - db
+      - redis
     restart: unless-stopped
+    
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ryvue
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+    
+  redis:
+    image: redis:7-alpine
+    command: redis-server --requirepass ruoyi123
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
