@@ -2,9 +2,11 @@
 FROM node:20-alpine AS frontend
 WORKDIR /build
 COPY frontend/package*.json ./
-RUN npm install
+RUN npm install -g pnpm
+RUN pnpm config set store-dir /root/.local/share/pnpm/store
+RUN pnpm install --frozen-lockfile
 COPY frontend/. .
-RUN npm run build
+RUN pnpm run build
 
 # 阶段2: 编译后端
 FROM eclipse-temurin:17-jdk-alpine AS backend
