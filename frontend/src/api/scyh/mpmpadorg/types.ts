@@ -1,0 +1,79 @@
+export interface MPMPADORGVO {
+  id: any; // 机构ID
+  orgCode: any; // 机构编码
+  orgFullPath: any; // 机构全路径
+  orgName: any; // 机构名称
+  orgShortName: any; // 机构简称
+  orgType: any; // 机构类型
+  establishDate: any; // 设立日期
+  revokeDate: any; // 撤销日期
+  effectiveDate: any; // 生效日期
+  invalidDate: any; // 失效日期
+  field: any; // 有效标志
+  display: any; // 显示顺序
+  address: any; // 地址
+  org: any; // 机构职能
+  orgLatitude: any; // 机构纬度
+  field2: any; // 行政纬度上级代码
+  field3: any; // 资产维度上级
+  field4: any; // 党群维度上级
+  field5: any; // 工会维度上级
+  level: any; // 层级码
+  industryCategory: any; // 行业分类
+  industryCategory2: any; // 行业分类(内部)
+  field6: any; // 公司活动状态
+  businessRegister: any; // 工商注册号
+  registerDate: any; // 注册日期
+  orgOrg: any; // 组织机构代码证代码
+  field7: any; // 法定代表人(负责人)
+  statistics: any; // 统计登记号
+  mainUnit: any; // 主营单位代码
+  tax: any; // 税务登记号
+  remark: any; // 备注
+  isDisplay: any; // 是否显示
+  isSync: any; // 是否同步
+}
+
+export interface MPMPADORGForm {
+  id?: string | number; // 机构ID
+  orgCode?: any; // 机构编码
+  orgFullPath?: any; // 机构全路径
+  orgName?: any; // 机构名称
+  orgShortName?: any; // 机构简称
+  orgType?: any; // 机构类型
+  establishDate?: any; // 设立日期
+  revokeDate?: any; // 撤销日期
+  effectiveDate?: any; // 生效日期
+  invalidDate?: any; // 失效日期
+  field?: any; // 有效标志
+  display?: any; // 显示顺序
+  address?: any; // 地址
+  org?: any; // 机构职能
+  orgLatitude?: any; // 机构纬度
+  field2?: any; // 行政纬度上级代码
+  field3?: any; // 资产维度上级
+  field4?: any; // 党群维度上级
+  field5?: any; // 工会维度上级
+  level?: any; // 层级码
+  industryCategory?: any; // 行业分类
+  industryCategory2?: any; // 行业分类(内部)
+  field6?: any; // 公司活动状态
+  businessRegister?: any; // 工商注册号
+  registerDate?: any; // 注册日期
+  orgOrg?: any; // 组织机构代码证代码
+  field7?: any; // 法定代表人(负责人)
+  statistics?: any; // 统计登记号
+  mainUnit?: any; // 主营单位代码
+  tax?: any; // 税务登记号
+  remark?: any; // 备注
+  isDisplay?: any; // 是否显示
+  isSync?: any; // 是否同步
+}
+
+export interface MPMPADORGQuery extends PageQuery {
+  orgCode?: any; // 机构编码
+  orgFullPath?: any; // 机构全路径
+  orgName?: any; // 机构名称
+  orgShortName?: any; // 机构简称
+  orgType?: any; // 机构类型
+}

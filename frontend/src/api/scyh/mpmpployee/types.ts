@@ -1,0 +1,72 @@
+export interface MPMPPLOYEEVO {
+  empCode: any; // 工号
+  name: any; // 姓名
+  name2: any; // 姓名拼音
+  name3: any; // 姓名简拼
+  field: any; // 曾用名
+  gender: any; // 性别
+  field2: any; // 出生日期
+  field3: any; // 证件号码
+  field4: any; // 证件类型
+  field5: any; // 民族
+  field6: any; // 籍贯
+  orgName: any; // 所属机构
+  field7: any; // 政治面貌
+  post: any; // 岗位
+  field8: any; // 用户角色
+  field9: any; // 来公司日期
+  unitPhone: any; // 单位电话
+  field10: any; // 电子邮箱
+  field11: any; // 当前职称
+  field12: any; // 当前技能等级
+  field13: any; // 全日制学历
+  field14: any; // 全日制学位
+  field15: any; // 全日制专业
+  field16: any; // 全日制毕业时间
+  isSync: any; // 是否同步
+  createBy: any; // 创建人
+  createTime: any; // 创建时间
+  field17: any; // 修改人
+  field18: any; // 修改时间
+}
+
+export interface MPMPPLOYEEForm {
+  empCode?: any; // 工号
+  name?: any; // 姓名
+  name2?: any; // 姓名拼音
+  name3?: any; // 姓名简拼
+  field?: any; // 曾用名
+  gender?: any; // 性别
+  field2?: any; // 出生日期
+  field3?: any; // 证件号码
+  field4?: any; // 证件类型
+  field5?: any; // 民族
+  field6?: any; // 籍贯
+  orgName?: any; // 所属机构
+  field7?: any; // 政治面貌
+  post?: any; // 岗位
+  field8?: any; // 用户角色
+  field9?: any; // 来公司日期
+  unitPhone?: any; // 单位电话
+  field10?: any; // 电子邮箱
+  field11?: any; // 当前职称
+  field12?: any; // 当前技能等级
+  field13?: any; // 全日制学历
+  field14?: any; // 全日制学位
+  field15?: any; // 全日制专业
+  field16?: any; // 全日制毕业时间
+  isSync?: any; // 是否同步
+  createBy?: any; // 创建人
+  createTime?: any; // 创建时间
+  field17?: any; // 修改人
+  field18?: any; // 修改时间
+}
+
+export interface MPMPPLOYEEQuery extends PageQuery {
+  empCode?: any; // 工号
+  name?: any; // 姓名
+  name2?: any; // 姓名拼音
+  name3?: any; // 姓名简拼
+  field?: any; // 曾用名
+  gender?: any; // 性别
+}
