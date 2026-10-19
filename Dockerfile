@@ -23,3 +23,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 80
 CMD ["sh", "-c", "nginx -g 'daemon off;' & exec java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar"]
+# rebuild trigger
