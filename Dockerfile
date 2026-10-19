@@ -1,5 +1,5 @@
 # ============================================================
-# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v9)
+# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v10)
 # 前端 dist 本地预构建，后端在 Docker 内编译
 # 适配 Render Free (512MB) 及以上
 # ============================================================
@@ -22,4 +22,4 @@ COPY --from=backend-build /build/ruoyi-admin/target/ruoyi-admin.jar app.jar
 COPY nginx.conf /etc/nginx/nginx.conf
 ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 80
-CMD ["sh", "-c", "nginx -g 'daemon off;' & java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar"]
+CMD ["sh", "-c", "nginx -g 'daemon off;' & exec java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar"]
