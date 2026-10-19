@@ -39,3 +39,4 @@ services:
       # ↓↓↓ JVM 内存（根据套餐调整）↓↓↓
       - key: JAVA_OPTS
         value: "-Xms512m -Xmx1500m -XX:+UseZGC"
+# forced rebuild 1792375796
