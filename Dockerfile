@@ -24,3 +24,4 @@ ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 80
 CMD CMD ["sh", "-c", "nginx -g 'daemon off;' & echo '[STARTUP] Starting Java...' && java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar 2>&1 | tee /tmp/java.log; echo '[STARTUP] Java exited with code $?' >> /tmp/java.log"]
 # rebuild trigger
+# trigger rebuild for login.vue update
