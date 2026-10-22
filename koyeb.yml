@@ -1,0 +1,19 @@
+name: ehs-system
+services:
+  - name: ehs-backend
+    type: web
+    ports: 8080
+    routes:
+      - path: /
+    env:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: {{db.host}}
+      DB_NAME: ryvue
+      DB_USER: postgres
+      DB_PASSWORD: {{db.password}}
+      REDIS_HOST: localhost
+    build:
+      dockerfile: Dockerfile
+    regions:
+      - fra
+    instances: 1
