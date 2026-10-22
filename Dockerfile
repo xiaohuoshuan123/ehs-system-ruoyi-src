@@ -1,7 +1,8 @@
 # ============================================================
-# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v10)
+# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v11)
 # 前端 dist 本地预构建，后端在 Docker 内编译
 # 适配 Render Free (512MB) 及以上
+# 修复：Java 启动优先，nginx 后启动
 # ============================================================
 
 # 阶段1: 编译后端（JDK）
@@ -20,7 +21,8 @@ WORKDIR /app
 COPY frontend/dist /usr/share/nginx/html
 COPY --from=backend-build /build/ruoyi-admin/target/ruoyi-admin.jar app.jar
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /app/entrypoint.sh
 ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 80
-CMD ["sh", "-c", "nginx -g 'daemon off;' & java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar"]
-# rebuild trigger
+RUN chmod +x /app/entrypoint.sh
+CMD ["/app/entrypoint.sh"]
