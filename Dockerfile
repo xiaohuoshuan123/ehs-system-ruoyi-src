@@ -1,26 +1,26 @@
-# ============================================================
-# RuoYi-Vue-Plus v6.0.0 部署镜像 (预构建版 v10)
-# 前端 dist 本地预构建，后端在 Docker 内编译
-# 适配 Render Free (512MB) 及以上
-# ============================================================
-
-# 阶段1: 编译后端（JDK）
-FROM eclipse-temurin:21 AS backend-build
-RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/lists/*
-WORKDIR /build
-COPY backend/. .
-ENV MAVEN_OPTS=-Xmx512m
-RUN mvn dependency:go-offline -B
-RUN mvn clean package -DskipTests
-
-# 阶段2: 运行（JRE）
-FROM eclipse-temurin:21-jre
-RUN apt-get update && apt-get install -y --no-install-recommends nginx wget curl && rm -rf /var/lib/apt/lists/*
-WORKDIR /app
-COPY frontend/dist /usr/share/nginx/html
-COPY --from=backend-build /build/ruoyi-admin/target/ruoyi-admin.jar app.jar
-COPY nginx.conf /etc/nginx/nginx.conf
-ENV SPRING_PROFILES_ACTIVE=prod
-EXPOSE 80
-CMD ["sh", "-c", "nginx -g 'daemon off;' & java -Dserver.port=8080 -Xms128m -Xmx384m -XX:+UseSerialGC -jar app.jar"]
-# rebuild trigger
+IyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT0KIyBSdW9ZaS1WdWUtUGx1cyB2Ni4wLjAg6YOo
+572y6ZWc5YOPICjpooTmnoTlu7rniYggdjEwKQojIOWJjeerryBkaXN0IOac
+rOWcsOmihOaehOW7uu+8jOWQjuerr+WcqCBEb2NrZXIg5YaF57yW6K+RCiMg
+6YCC6YWNIFJlbmRlciBGcmVlICg1MTJNQikg5Y+K5Lul5LiKCiMgPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09CgojIOmYtuautTE6IOe8luivkeWQjuerr++8iEpES++8iQpG
+Uk9NIGVjbGlwc2UtdGVtdXJpbjoyMSBBUyBiYWNrZW5kLWJ1aWxkClJVTiBh
+cHQtZ2V0IHVwZGF0ZSAmJiBhcHQtZ2V0IGluc3RhbGwgLXkgLS1uby1pbnN0
+YWxsLXJlY29tbWVuZHMgbWF2ZW4gJiYgcm0gLXJmIC92YXIvbGliL2FwdC9s
+aXN0cy8qCldPUktESVIgL2J1aWxkCkNPUFkgYmFja2VuZC8uIC4KRU5WIE1B
+VkVOX09QVFM9LVhteDUxMm0KUlVOIG12biBkZXBlbmRlbmN5OmdvLW9mZmxp
+bmUgLUIKUlVOIG12biBjbGVhbiBwYWNrYWdlIC1Ec2tpcFRlc3RzCgojIOmY
+tuautTI6IOi/kOihjO+8iEpSRe+8iQpGUk9NIGVjbGlwc2UtdGVtdXJpbjoy
+MS1qcmUKUlVOIGFwdC1nZXQgdXBkYXRlICYmIGFwdC1nZXQgaW5zdGFsbCAt
+eSAtLW5vLWluc3RhbGwtcmVjb21tZW5kcyBuZ2lueCB3Z2V0IGN1cmwgJiYg
+cm0gLXJmIC92YXIvbGliL2FwdC9saXN0cy8qCldPUktESVIgL2FwcApDT1BZ
+IGZyb250ZW5kL2Rpc3QgL3Vzci9zaGFyZS9uZ2lueC9odG1sCkNPUFkgLS1m
+cm9tPWJhY2tlbmQtYnVpbGQgL2J1aWxkL3J1b3lpLWFkbWluL3RhcmdldC9y
+dW95aS1hZG1pbi5qYXIgYXBwLmphcgpDT1BZIG5naW54LmNvbmYgL2V0Yy9u
+Z2lueC9uZ2lueC5jb25mCkVOViBTUFJJTkdfUFJPRklMRVNfQUNUSVZFPXBy
+b2QKRVhQT1NFIDgwCkNNRCBbInNoIiwgIi1jIiwgIm5naW54IC1nICdkYWVt
+b24gb2ZmOycgJiBqYXZhIC1Ec2VydmVyLnBvcnQ9ODA4MCAtWG1zMTI4bSAt
+WG14Mzg0bSAtWFg6K1VzZVNlcmlhbEdDIC1qYXIgYXBwLmphciJdCiMgcmVi
+dWlsZCB0cmlnZ2Vy
+# rebuild: fix redis exclude config yaml structure
