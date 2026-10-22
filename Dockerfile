@@ -26,3 +26,4 @@ ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 80
 RUN chmod +x /app/entrypoint.sh
 CMD ["/app/entrypoint.sh"]
+# rebuild: entrypoint script fix
